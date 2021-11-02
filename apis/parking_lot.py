@@ -35,7 +35,7 @@ class ParkingLotApi:
 
     @staticmethod
     async def create_status(lot_id: int, day: int, hour: int, minute: int, status: dict) -> RowProxy:
-        status_data = dict(id=lot_id, day=day, hour=hour, minute=minute, status=status)
+        status_data = dict(lot_id=lot_id, day=day, hour=hour, minute=minute, status=status)
 
         logger.info(f"Inserting lot statistics of lot {lot_id} into db ({day} {hour}:{minute})")
         async with DatabaseConnection.acquire_connection() as connection:

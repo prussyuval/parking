@@ -44,4 +44,11 @@ async def query_parking_lots():
 
 if __name__ == "__main__":
     loop = asyncio.get_event_loop()
-    loop.run_until_complete(query_parking_lots())
+
+    while True:
+        start_time = datetime.now()
+        loop.run_until_complete(query_parking_lots())
+        end_time = datetime.now()
+        delta_time = end_time - start_time
+        logger.info(f"Sleeping for {60 - delta_time.total_seconds()} seconds")
+        loop.run_until_complete(asyncio.sleep(60 - delta_time.total_seconds()))

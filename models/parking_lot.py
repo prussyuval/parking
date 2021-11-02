@@ -9,6 +9,8 @@ class ParkingLot(Model):
 
     id: int = Column(Integer(), unique=True, nullable=False, primary_key=True)
 
+    lot_id: int = Column(Integer(), unique=True, nullable=False)
+
     hour: int = Column(Integer(), nullable=False)
     minute: int = Column(Integer(), nullable=False)
     day: int = Column(Integer(), nullable=False)

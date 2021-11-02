@@ -13,7 +13,7 @@ class ParkingLotApi:
     async def get_status(lot_id: int, day: int, hour: int, minute: int) -> Optional[RowProxy]:
         async with DatabaseConnection.acquire_connection() as connection:
             result = await connection.execute(ParkingLotTable.select().where(
-                and_(ParkingLotTable.c.id == lot_id,
+                and_(ParkingLotTable.c.lot_id == lot_id,
                      ParkingLotTable.c.minute == minute,
                      ParkingLotTable.c.hour == hour,
                      ParkingLotTable.c.day == day)
@@ -27,7 +27,7 @@ class ParkingLotApi:
         async with DatabaseConnection.acquire_connection() as connection:
             await connection.execute(ParkingLotTable
                                      .update()
-                                     .where(and_(ParkingLotTable.c.id == lot_id,
+                                     .where(and_(ParkingLotTable.c.lot_id == lot_id,
                                                  ParkingLotTable.c.minute == minute,
                                                  ParkingLotTable.c.hour == hour,
                                                  ParkingLotTable.c.day == day))
@@ -41,6 +41,6 @@ class ParkingLotApi:
         async with DatabaseConnection.acquire_connection() as connection:
             new_review = await connection.execute(ParkingLotTable.insert()
                                                   .values(**status_data)
-                                                  .returning(ParkingLotTable.c.id))
+                                                  .returning(ParkingLotTable.c.lot_id))
 
             return await new_review.first()

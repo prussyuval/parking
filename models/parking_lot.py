@@ -7,7 +7,7 @@ from models.base import Model
 class ParkingLot(Model):
     __tablename__ = "parking_lots"
 
-    id: int = Column(UUID(as_uuid=True), unique=True, nullable=False)
+    id: int = Column(Integer(), unique=True, nullable=False, primary_key=True)
 
     hour: int = Column(Integer(), nullable=False)
     minute: int = Column(Integer(), nullable=False)

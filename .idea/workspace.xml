@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3b52b693-334a-4afe-93e8-f82d8ff49d1d" name="Default Changelist" comment="More changes">
-      <change afterPath="$PROJECT_DIR$/migrations/migrate_file.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enums.py" beforeDir="false" afterPath="$PROJECT_DIR$/enums.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/migrate_file.py" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/migrate_file.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +68,9 @@
       <option name="presentableId" value="Default" />
       <updated>1635883037733</updated>
       <workItem from="1635883039183" duration="4207000" />
+      <workItem from="1635888216091" duration="316000" />
+      <workItem from="1635888539688" duration="19000" />
+      <workItem from="1635888559670" duration="128000" />
     </task>
     <task id="LOCAL-00001" summary="More changes">
       <created>1635887343474</created>
@@ -91,6 +95,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="More changes" />

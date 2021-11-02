@@ -23,8 +23,8 @@ async def query_parking_lots():
                                                          minute=query_time.minute)
 
         if existing_result is None:
-            status = {Status.empty.value: 0, Status.few_left.value: 0, Status.full.value: 0}
-            status[current_status.value] += 1
+            status = {str(Status.empty.value): 0, str(Status.few_left.value): 0, str(Status.full.value): 0}
+            status[str(current_status.value)] += 1
 
             await ParkingLotApi.create_status(lot_id=lot_id,
                                               day=query_time.weekday(),
@@ -35,7 +35,7 @@ async def query_parking_lots():
         else:
             dict_result = dict(existing_result)
             status = dict_result["status"]
-            status[current_status.value] += 1
+            status[str(current_status.value)] += 1
             await ParkingLotApi.update_status(lot_id=lot_id,
                                               day=query_time.weekday(),
                                               hour=query_time.hour,

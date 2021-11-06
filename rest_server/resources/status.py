@@ -1,5 +1,6 @@
 from datetime import datetime
 
+import pytz
 from aiohttp.web_response import Response
 
 from apis.external.ahuzot_api import AhuzotApi
@@ -18,7 +19,7 @@ class StatusResource(CorsFixedResource):
             return create_error_response(RestError.MISSING_ARGUMENT,
                                          error_code=HttpResponseCode.BAD_REQUEST,
                                          argument='lot id')
-        current_datetime = datetime.now()
+        current_datetime = datetime.now(tz=pytz.timezone("Asia/Jerusalem"))
 
         current_status, _ = await AhuzotApi.query_status(int(lot_id))
 

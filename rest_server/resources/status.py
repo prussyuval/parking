@@ -10,7 +10,7 @@ from rest_server.response_codes import HttpResponseCode
 from rest_server.rest_utils import create_error_response, create_success_response, RestError
 
 
-class ReviewResource(CorsFixedResource):
+class StatusResource(CorsFixedResource):
     async def get(self) -> Response:
         lot_id = self.request.query.get('lot_id')
         if lot_id is None:

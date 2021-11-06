@@ -18,7 +18,7 @@ if __name__ == "__main__":
         query_time = datetime.strptime(line.strip().split("|")[1], "%m/%d/%Y, %H:%M:%S")
 
         if current_status != Status.unknown:
-            status = {datetime_to_str(query_time)}
+            status = {datetime_to_str(query_time): current_status.value}
             task = ParkingLotApi.create_status(lot_id=45,
                                                day=query_time.weekday(),
                                                hour=query_time.hour,

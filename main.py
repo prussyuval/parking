@@ -5,6 +5,7 @@ from apis.external.ahuzot_api import AhuzotApi
 from apis.parking_lot import ParkingLotApi
 from enums import Status
 from utils.logging import logger
+from utils.time_serialize import datetime_to_str
 
 LOT_IDS = [45]
 
@@ -23,9 +24,9 @@ async def query_parking_lots():
                                                          minute=query_time.minute)
 
         if existing_result is None:
-            status = {str(Status.empty.value): 0, str(Status.few_left.value): 0, str(Status.full.value): 0}
-            status[str(current_status.value)] += 1
-
+            status = {
+                datetime_to_str(query_time): current_status.value,
+            }
             await ParkingLotApi.create_status(lot_id=lot_id,
                                               day=query_time.weekday(),
                                               hour=query_time.hour,
@@ -35,7 +36,11 @@ async def query_parking_lots():
         else:
             dict_result = dict(existing_result)
             status = dict_result["status"]
-            status[str(current_status.value)] += 1
+            if datetime_to_str(query_time) in status:
+                logger.warning(f"Time {query_time} already exists in the db")
+                return
+
+            status[query_time] += current_status.value
             await ParkingLotApi.update_status(lot_id=lot_id,
                                               day=query_time.weekday(),
                                               hour=query_time.hour,

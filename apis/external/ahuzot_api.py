@@ -1,4 +1,3 @@
-import time
 from datetime import datetime
 from typing import Tuple
 
@@ -6,6 +5,7 @@ import aiohttp
 from bs4 import BeautifulSoup
 
 from enums import Status
+from utils.time_serialize import str_to_datetime
 
 URL = "http://www.ahuzot.co.il/Parking/ParkingDetails/?ID={}"
 
@@ -27,6 +27,6 @@ class AhuzotApi:
 
         status_table = site_soup.select_one(".ParkingDetailsTable")
         site_time = status_table.select_one(".IconText").text
-        query_time = datetime.strptime(site_time, '%d/%m/%Y %H:%M')
+        query_time = str_to_datetime(site_time)
         image_url = status_table.select_one("img").attrs.get("src")
         return IMAGE_TO_STATUS_MAPPING.get(image_url, Status.unknown), query_time

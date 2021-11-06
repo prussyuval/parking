@@ -8,6 +8,7 @@ from enums import STATUS_NAMING_MAP
 from rest_server.resources import CorsFixedResource
 from rest_server.response_codes import HttpResponseCode
 from rest_server.rest_utils import create_error_response, create_success_response, RestError
+from utils.time_serialize import datetime_to_str
 
 
 class StatusResource(CorsFixedResource):
@@ -21,7 +22,7 @@ class StatusResource(CorsFixedResource):
 
         current_status, _ = await AhuzotApi.query_status(int(lot_id))
 
-        response_data = {"current": STATUS_NAMING_MAP[current_status], "stored_status": {}}
+        response_data = {"current": STATUS_NAMING_MAP[current_status], "stored_status": {}, "time": datetime_to_str(current_datetime)}
 
         result = await ParkingLotApi.get_status(int(lot_id),
                                                 current_datetime.weekday(),

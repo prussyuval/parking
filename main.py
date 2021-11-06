@@ -6,7 +6,7 @@ from apis.parking_lot import ParkingLotApi
 from utils.logging import logger
 from utils.time_serialize import datetime_to_str
 
-LOT_IDS = [45]
+LOT_IDS = [40, 45]
 
 
 async def query_parking_lots():

@@ -19,7 +19,7 @@ class StatusResource(CorsFixedResource):
                                          argument='lot id')
         current_datetime = datetime.now()
 
-        current_status = await AhuzotApi.query_status(int(lot_id))
+        current_status, _ = await AhuzotApi.query_status(int(lot_id))
 
         response_data = {"current": STATUS_NAMING_MAP[current_status], "stored_status": {}}
 

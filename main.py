@@ -3,7 +3,6 @@ from datetime import datetime
 
 from apis.external.ahuzot_api import AhuzotApi
 from apis.parking_lot import ParkingLotApi
-from enums import Status
 from utils.logging import logger
 from utils.time_serialize import datetime_to_str
 

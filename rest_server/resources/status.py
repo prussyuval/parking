@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 
 import pytz
 from aiohttp.web_response import Response
@@ -33,5 +33,16 @@ class StatusResource(CorsFixedResource):
         if result is not None:
             dict_result = dict(result)
             response_data["stored_status"] = dict_result["status"]
+
+        future_datetime = current_datetime + timedelta(minutes=30)
+
+        result = await ParkingLotApi.get_prediction(int(lot_id),
+                                                    future_datetime.weekday(),
+                                                    future_datetime.hour,
+                                                    future_datetime.minute)
+
+        if result is not None:
+            dict_result = dict(result)
+            response_data["future_status"] = dict_result["status"]
 
         return create_success_response(response_data)

@@ -22,6 +22,19 @@ class ParkingLotApi:
             return await result.fetchone()
 
     @staticmethod
+    async def get_prediction(lot_id: int, day: int, hour: int, minute: int) -> Optional[RowProxy]:
+
+        async with DatabaseConnection.acquire_connection() as connection:
+            result = await connection.execute(ParkingLotTable.select().where(
+                and_(ParkingLotTable.c.lot_id == lot_id,
+                     ParkingLotTable.c.minute == minute,
+                     ParkingLotTable.c.hour == hour,
+                     ParkingLotTable.c.day == day)
+            ))
+
+            return await result.fetchone()
+
+    @staticmethod
     async def update_status(lot_id: int, day: int, hour: int, minute: int, status: dict) -> None:
         logger.debug(f"Updating status for lot {lot_id} ({day} {hour}:{minute}).")
         async with DatabaseConnection.acquire_connection() as connection:

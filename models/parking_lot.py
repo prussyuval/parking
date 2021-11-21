@@ -11,7 +11,7 @@ class Lot(Model):
     eng_name: str = Column(String(), nullable=False)
     heb_name: str = Column(String(), nullable=False)
     address: str = Column(String(), nullable=False)
-    nicknames: list[str] = Column(ARRAY, nullable=True)
+    nicknames: list[str] = Column(ARRAY(item_type=String()), nullable=True)
 
 
 class ParkingLot(Model):

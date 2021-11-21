@@ -23,7 +23,6 @@ class ParkingLotApi:
 
     @staticmethod
     async def get_prediction(lot_id: int, day: int, hour: int, minute: int) -> Optional[RowProxy]:
-
         async with DatabaseConnection.acquire_connection() as connection:
             result = await connection.execute(ParkingLotTable.select().where(
                 and_(ParkingLotTable.c.lot_id == lot_id,

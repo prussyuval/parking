@@ -1,3 +1,5 @@
+from typing import List
+
 from sqlalchemy import Column, JSON, Integer, String, ARRAY
 
 from models.base import Model
@@ -11,7 +13,7 @@ class Lot(Model):
     eng_name: str = Column(String(), nullable=False)
     heb_name: str = Column(String(), nullable=False)
     address: str = Column(String(), nullable=False)
-    nicknames: list[str] = Column(ARRAY(String()), nullable=True)
+    nicknames: List[str] = Column(ARRAY(String()), nullable=True)
 
 
 class ParkingLot(Model):

@@ -6,6 +6,7 @@ from aiohttp.web_response import Response
 
 from apis.external.ahuzot_api import AhuzotApi
 from apis.parking_lot import ParkingLotApi
+from apis.traffic import TrafficApi
 from enums import STATUS_NAMING_MAP
 from rest_server.resources import CorsFixedResource
 from rest_server.response_codes import HttpResponseCode
@@ -15,6 +16,8 @@ from utils.time_serialize import datetime_to_str
 
 class StatusResource(CorsFixedResource):
     async def get(self) -> Response:
+        await TrafficApi.increase_ip_entrances(self.request.remote)
+
         lot_id = self.request.query.get('lot_id')
         if lot_id is None:
             return create_error_response(RestError.MISSING_ARGUMENT,

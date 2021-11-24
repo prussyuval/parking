@@ -5,6 +5,9 @@ from utils.postgres.db import DatabaseConnection
 class TrafficApi:
     @staticmethod
     async def increase_ip_entrances(ip: str) -> None:
+        if not ip:
+            return
+
         async with DatabaseConnection.acquire_connection() as connection:
             result = await connection.execute(TrafficTable.select().where(TrafficTable.c.ip == ip))
             current_value = await result.fetchone()

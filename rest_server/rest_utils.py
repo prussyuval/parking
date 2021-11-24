@@ -18,6 +18,7 @@ class ValidationError(Exception):
 class RestError(Enum):
     NOT_FOUND = "{resource_type} {identifier} does not exists"
     MISSING_ARGUMENT = "Missing {argument} from query"
+    INVALID_FORMAT = "{argument} was passed with invalid format"
 
     def format(self, *args, **kwargs):
         return self.value.format(*args, **kwargs)

@@ -1,6 +1,7 @@
+from datetime import datetime
 from typing import List
 
-from sqlalchemy import Column, JSON, Integer, String, ARRAY
+from sqlalchemy import Column, JSON, Integer, String, ARRAY, DateTime
 
 from models.base import Model
 
@@ -28,6 +29,8 @@ class ParkingLot(Model):
     day: int = Column(Integer(), nullable=False)
 
     status: dict = Column(JSON(), nullable=False, default={})
+
+    # update_date: datetime = Column(DateTime(), nullable=True, default=datetime.now())
 
 
 LotTable = Lot.__table__

@@ -1,3 +1,4 @@
+import re
 from datetime import datetime, timedelta
 
 import pytz
@@ -44,5 +45,50 @@ class StatusResource(CorsFixedResource):
         if result is not None:
             dict_result = dict(result)
             response_data["future_status"] = dict_result["status"]
+
+        return create_success_response(response_data)
+
+
+class PredictStatusResource(CorsFixedResource):
+    @staticmethod
+    def _from_str_to_timedelta(delta: str) -> timedelta:
+        t = datetime.strptime(delta, "%H:%M")
+        return timedelta(hours=t.hour, minutes=t.minute)
+
+    async def get(self) -> Response:
+        lot_id = self.request.query.get('lot_id')
+        if lot_id is None:
+            return create_error_response(RestError.MISSING_ARGUMENT,
+                                         error_code=HttpResponseCode.BAD_REQUEST,
+                                         argument='lot id')
+
+        delta = self.request.query.get('delta')
+
+        if delta is None:
+            return create_error_response(RestError.MISSING_ARGUMENT,
+                                         error_code=HttpResponseCode.BAD_REQUEST,
+                                         argument='delta')
+
+        try:
+            time_delta = self._from_str_to_timedelta(delta)
+        except:
+            return create_error_response(RestError.INVALID_FORMAT,
+                                         error_code=HttpResponseCode.BAD_REQUEST,
+                                         argument='delta')
+
+
+        current_datetime = datetime.now(tz=pytz.timezone("Asia/Jerusalem"))
+        prediction_datetime = current_datetime + time_delta
+
+        response_data = {"prediction_time": {}}
+
+        result = await ParkingLotApi.get_status(int(lot_id),
+                                                prediction_datetime.weekday(),
+                                                prediction_datetime.hour,
+                                                prediction_datetime.minute)
+
+        if result is not None:
+            dict_result = dict(result)
+            response_data["prediction_time"] = dict_result["status"]
 
         return create_success_response(response_data)

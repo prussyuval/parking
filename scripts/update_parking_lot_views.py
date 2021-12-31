@@ -21,7 +21,7 @@ async def update_parking_lot_views():
             score = 0
             total = 0
             for status in statuses.values():
-                status = Status[status]
+                status = Status(status)
                 status_score = STATUS_TO_SCORE.get(status)
                 if status_score is not None:
                     score += status_score

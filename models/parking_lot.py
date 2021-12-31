@@ -42,4 +42,4 @@ class ParkingLotView(Model):
 
 LotTable = Lot.__table__
 ParkingLotTable = ParkingLot.__table__
-ParkingLotViewTable = ParkingLotView.__tablename__
+ParkingLotViewTable = ParkingLotView.__table__

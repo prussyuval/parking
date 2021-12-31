@@ -49,7 +49,7 @@ async def update_parking_lot_views():
 
         for day, day_data in heat_map_data.items():
             for hour, hour_data in day_data.items():
-                hour_data[hour] = hour_data[hour].get_score_avg()
+                day_data[hour] = hour_data.get_score_avg()
         await ParkingLotViewApi.create_view(lot_id, dict(heat_map_data))
 
 if __name__ == "__main__":

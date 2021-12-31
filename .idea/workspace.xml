@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3b52b693-334a-4afe-93e8-f82d8ff49d1d" name="Default Changelist" comment="Add heat map resource">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="3b52b693-334a-4afe-93e8-f82d8ff49d1d" name="Default Changelist" comment="Fix heat map calculation">
       <change beforePath="$PROJECT_DIR$/scripts/update_parking_lot_views.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/update_parking_lot_views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/time_serialize.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/time_serialize.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +78,7 @@
       <workItem from="1637777256791" duration="595000" />
       <workItem from="1637796383756" duration="1352000" />
       <workItem from="1640957664713" duration="2122000" />
-      <workItem from="1640963522093" duration="381000" />
+      <workItem from="1640963522093" duration="434000" />
     </task>
     <task id="LOCAL-00001" summary="More changes">
       <created>1635887343474</created>
@@ -201,7 +199,14 @@
       <option name="project" value="LOCAL" />
       <updated>1640959370078</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Fix heat map calculation">
+      <created>1640963912105</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1640963912105</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -232,6 +237,7 @@
     <MESSAGE value="Bug fix" />
     <MESSAGE value="Add rounding" />
     <MESSAGE value="Add heat map resource" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add heat map resource" />
+    <MESSAGE value="Fix heat map calculation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix heat map calculation" />
   </component>
 </project>

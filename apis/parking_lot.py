@@ -61,7 +61,7 @@ class ParkingLotApi:
     async def get_parking_lot_full_data(lot_id: int) -> List[RowProxy]:
         async with DatabaseConnection.acquire_connection() as connection:
             result = await connection.execute(ParkingLotTable.select().where(
-                and_(ParkingLotTable.c.lot_id == lot_id)
+                ParkingLotTable.c.lot_id == lot_id
             ))
 
             return await result.fetchall()

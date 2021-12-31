@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, List
 
 from aiopg.sa.result import RowProxy
 from sqlalchemy import and_
@@ -58,7 +58,7 @@ class ParkingLotApi:
             return await new_review.first()
 
     @staticmethod
-    async def get_parking_lot_full_data(lot_id: int) -> list[RowProxy]:
+    async def get_parking_lot_full_data(lot_id: int) -> List[RowProxy]:
         async with DatabaseConnection.acquire_connection() as connection:
             result = await connection.execute(ParkingLotTable.select().where(
                 and_(ParkingLotTable.c.lot_id == lot_id)

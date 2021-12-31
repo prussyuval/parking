@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3b52b693-334a-4afe-93e8-f82d8ff49d1d" name="Default Changelist" comment="Try again">
-      <change afterPath="$PROJECT_DIR$/apis/traffic.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/traffic.py" afterDir="false" />
+    <list default="true" id="3b52b693-334a-4afe-93e8-f82d8ff49d1d" name="Default Changelist" comment="Add heat map resource">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/initial_db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/initial_db.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest_server/resources/status.py" beforeDir="false" afterPath="$PROJECT_DIR$/rest_server/resources/status.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/update_parking_lot_views.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/update_parking_lot_views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/time_serialize.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/time_serialize.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +78,9 @@
       <workItem from="1637536185916" duration="175000" />
       <workItem from="1637536509285" duration="306000" />
       <workItem from="1637777256791" duration="595000" />
-      <workItem from="1637796383756" duration="703000" />
+      <workItem from="1637796383756" duration="1352000" />
+      <workItem from="1640957664713" duration="2122000" />
+      <workItem from="1640963522093" duration="381000" />
     </task>
     <task id="LOCAL-00001" summary="More changes">
       <created>1635887343474</created>
@@ -145,7 +145,63 @@
       <option name="project" value="LOCAL" />
       <updated>1637536763062</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Add traffic">
+      <created>1637797132917</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1637797132917</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Clear in case of empty IP">
+      <created>1637797276363</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1637797276363</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Add views data">
+      <created>1640958834598</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1640958834598</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Bug fix">
+      <created>1640958880264</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1640958880264</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Bug fix">
+      <created>1640958904009</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1640958904009</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Bug fix">
+      <created>1640959003689</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1640959003689</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Add rounding">
+      <created>1640959082366</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1640959082366</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Add heat map resource">
+      <created>1640959370078</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1640959370078</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -170,6 +226,12 @@
     <MESSAGE value="Add future status" />
     <MESSAGE value="Style fix" />
     <MESSAGE value="Try again" />
-    <option name="LAST_COMMIT_MESSAGE" value="Try again" />
+    <MESSAGE value="Add traffic" />
+    <MESSAGE value="Clear in case of empty IP" />
+    <MESSAGE value="Add views data" />
+    <MESSAGE value="Bug fix" />
+    <MESSAGE value="Add rounding" />
+    <MESSAGE value="Add heat map resource" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add heat map resource" />
   </component>
 </project>

@@ -3,10 +3,9 @@ from datetime import datetime
 
 from apis.external.ahuzot_api import AhuzotApi
 from apis.parking_lot import ParkingLotApi
+from lot_ids import LOT_IDS
 from utils.logging import logger
 from utils.time_serialize import datetime_to_str
-
-LOT_IDS = [40, 45, 94]
 
 
 async def query_parking_lots():

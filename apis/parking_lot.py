@@ -56,3 +56,12 @@ class ParkingLotApi:
                                                   .returning(ParkingLotTable.c.lot_id))
 
             return await new_review.first()
+
+    @staticmethod
+    async def get_parking_lot_full_data(lot_id: int) -> list[RowProxy]:
+        async with DatabaseConnection.acquire_connection() as connection:
+            result = await connection.execute(ParkingLotTable.select().where(
+                and_(ParkingLotTable.c.lot_id == lot_id)
+            ))
+
+            return await result.fetchall()

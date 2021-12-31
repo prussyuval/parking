@@ -28,7 +28,7 @@ async def update_parking_lot_views():
                     total += 1
 
             heat_map_data[time_with_dow_to_str(dict_result["day"], dict_result["hour"], dict_result["minute"])] = (
-                score / total
+                round(score / total, 2)
             )
 
         await ParkingLotViewApi.create_view(lot_id, dict(heat_map_data))

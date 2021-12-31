@@ -45,7 +45,7 @@ async def update_parking_lot_views():
                 heat_map_data[day][hour] = HourScore()
 
             heat_map_data[day][hour].score_sum += score
-            heat_map_data[day][hour].score_sum += total
+            heat_map_data[day][hour].score_count += total
 
         for day, day_data in heat_map_data.items():
             for hour, hour_data in day_data.items():

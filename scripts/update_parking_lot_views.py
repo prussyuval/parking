@@ -36,7 +36,10 @@ async def update_parking_lot_views():
                     total += 1
 
             day = dict_result["day"]
-            hour = dict_result["hour"]
+            hour = float(dict_result["hour"])
+            minute = dict_result["minute"]
+            if minute >= 30:
+                hour += 0.5
 
             if day not in heat_map_data:
                 heat_map_data[day] = {}

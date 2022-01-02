@@ -18,13 +18,13 @@ class HourScore:
         total = self.full + self.few_left + self.empty
 
         if self.full == total:
-            return 0
+            return 100
 
         if self.few_left == total:
-            return 1
+            return 99
 
         if self.empty == total:
-            return 100
+            return 0
 
         full_cardinality = self.full / total
         few_left_cardinality = self.few_left / total

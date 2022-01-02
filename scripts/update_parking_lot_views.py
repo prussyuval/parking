@@ -30,7 +30,7 @@ class HourScore:
         few_left_cardinality = self.few_left / total
         empty_cardinality = self.empty / total
 
-        return 100 * (1 - full_cardinality - (few_left_cardinality) * 0.95 - (empty_cardinality) * 0.05)
+        return 100 * (full_cardinality + (few_left_cardinality) * 0.95 + (empty_cardinality) * 0.05)
 
 
 async def update_parking_lot_views():

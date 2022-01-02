@@ -13,9 +13,3 @@ STATUS_NAMING_MAP = {
     Status.few_left: "FEW_LEFT",
     Status.full: "FULL",
 }
-
-STATUS_TO_SCORE = {
-    Status.empty: 0,
-    Status.few_left: 99,
-    Status.full: 100,
-}

@@ -56,7 +56,7 @@ def _get_next_gap_time(query_time: datetime, gaps: List[datetime]) -> Tuple[Opti
     >>> _get_next_gap_time(datetime(2021, 11, 10, 14, 1), [datetime(2021, 11, 10, 14, 2), datetime(2021, 11, 10, 14, 9), datetime(2021, 11, 10, 14, 14), datetime(2021, 11, 11, 10, 13), datetime(2021, 11, 11, 14, 21), datetime(2021, 11, 11, 19, 2), datetime(2021, 11, 11, 20, 30)])
     (None, None)
     >>> _get_next_gap_time(datetime(2021, 11, 11, 15, 21), [datetime(2021, 11, 10, 14, 2), datetime(2021, 11, 10, 14, 9), datetime(2021, 11, 10, 14, 14), datetime(2021, 11, 11, 10, 13), datetime(2021, 11, 11, 14, 21), datetime(2021, 11, 11, 19, 2), datetime(2021, 11, 11, 20, 30)])
-    (datetime(2021, 11, 11, 19, 2), datetime.timedelta(seconds=16860))
+    (datetime.datetime(2021, 11, 11, 19, 2), datetime.timedelta(seconds=16860))
     >>> _get_next_gap_time(datetime(2021, 11, 11, 20, 31), [datetime(2021, 11, 10, 14, 2), datetime(2021, 11, 10, 14, 9), datetime(2021, 11, 10, 14, 14), datetime(2021, 11, 11, 10, 13), datetime(2021, 11, 11, 14, 21), datetime(2021, 11, 11, 19, 2), datetime(2021, 11, 11, 20, 30)])
     (None, None)
     """

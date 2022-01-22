@@ -114,7 +114,13 @@ def _calculate_score(query_time, gaps, parking_status) -> Optional[float]:
         return 100.0
 
     minimum_occupation_at_gap = _get_default_occupation_by_gap_time(gap_length)
-    distance_from_gap_center: timedelta = query_time - (next_gap_time - (gap_length / 2))
+
+    middle_time = next_gap_time - (gap_length / 2)
+
+    if query_time >= middle_time:
+        distance_from_gap_center = query_time - middle_time
+    else:
+        distance_from_gap_center = middle_time - query_time
 
     relation = abs(float(distance_from_gap_center.seconds) / (float(gap_length.seconds) / 2))
     if relation > 1:

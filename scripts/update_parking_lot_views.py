@@ -122,7 +122,7 @@ def _calculate_score(query_time, gaps, parking_status) -> Optional[float]:
     else:
         distance_from_gap_center = middle_time - query_time
 
-    relation = abs(float(distance_from_gap_center.seconds) / (float(gap_length.seconds) / 2))
+    relation = abs(float(distance_from_gap_center.total_seconds()) / (float(gap_length.total_seconds()) / 2))
     if relation > 1:
         print()
         print(f"query_time => {query_time}")

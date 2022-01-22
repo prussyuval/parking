@@ -7,6 +7,9 @@ class Status(IntEnum):
     few_left = 2
     full = 3
 
+    def is_full_state(self):
+        return self in [self.few_left, self.full]
+
 
 STATUS_NAMING_MAP = {
     Status.empty: "EMPTY",

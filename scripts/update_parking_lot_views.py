@@ -1,73 +1,151 @@
 import asyncio
-from dataclasses import dataclass
+from collections import OrderedDict
+from datetime import datetime, timedelta
+from typing import Optional
 
 from apis.parking_lot_view import ParkingLotViewApi
 from enums import Status
 from lot_ids import LOT_IDS
 
 from apis.parking_lot import ParkingLotApi
+from utils.time_serialize import str_to_datetime
 
 
-@dataclass
-class HourScore:
-    full: int = 0
-    few_left: int = 0
-    empty: int = 0
+def _calculate_avg_score(scores: list[float]) -> float:
+    return round(100.0 * sum(scores) / len(scores), 2)
 
-    def get_score(self) -> float:
-        total = self.full + self.few_left + self.empty
 
-        if self.full == total:
-            return 100
+async def _collect_data(lot_id: int) -> OrderedDict:
+    results = await ParkingLotApi.get_parking_lot_full_data(lot_id=lot_id)
 
-        if self.few_left == total:
-            return 99
+    parking_status = OrderedDict()
 
-        if self.empty == total:
-            return 0
+    for result in results:
+        dict_result = dict(result)
+        statuses = dict_result["status"]
 
-        full_cardinality = self.full / total
-        few_left_cardinality = self.few_left / total
-        empty_cardinality = self.empty / total
+        for query_time, status in statuses.values():
+            parking_status[str_to_datetime(query_time)] = Status(status)
 
-        return 100 * (full_cardinality + (few_left_cardinality) * 0.99 + (empty_cardinality) * 0.01)
+    return parking_status
+
+
+def _find_gaps(parking_status: OrderedDict) -> list[datetime]:
+    gaps = []
+    previous_full = None
+    first = True
+
+    for query_time, s in parking_status.items():
+        if first:
+            first = False
+            gaps.append(query_time)
+            previous_full = s.is_full_state()
+            continue
+
+        if (not previous_full and s.is_full_state()) or (previous_full and not s.is_full_state()):
+            gaps.append(query_time)
+
+        previous_full = s.is_full_state()
+
+    return gaps
+
+
+def _get_next_gap_time(query_time: datetime, gaps: list[datetime]) -> tuple[Optional[datetime], Optional[timedelta]]:
+    previous = None
+    for gap in gaps:
+        if query_time >= gap:
+            if previous is None:
+                return gap, None
+            else:
+                return gap, gap - previous
+
+        previous = gap
+
+    return None, None
+
+
+def _get_default_occupation_by_gap_time(gap_timedelta: timedelta) -> float:
+    if gap_timedelta < timedelta(minutes=5):
+        return 98.0
+
+    if gap_timedelta < timedelta(minutes=15):
+        return 95.0
+
+    if gap_timedelta < timedelta(minutes=30):
+        return 90.0
+
+    if gap_timedelta < timedelta(hours=1):
+        return 80.0
+
+    if gap_timedelta < timedelta(hours=2):
+        return 70.0
+
+    if gap_timedelta < timedelta(hours=4):
+        return 60.0
+
+    if gap_timedelta < timedelta(hours=6):
+        return 50.0
+
+    return 40.0
+
+
+def _calculate_score(query_time, gaps, parking_status) -> Optional[float]:
+    next_gap_time, gap_length = _get_next_gap_time(query_time, gaps)
+    if next_gap_time is None or gap_length is None:
+        return None
+
+    gap_status: Status = parking_status[next_gap_time]
+
+    if gap_status.is_full_state():
+        # It's a full gap
+        return 100.0
+
+    minimum_occupation_at_gap = _get_default_occupation_by_gap_time(gap_length)
+    distance_from_gap_center: timedelta = next_gap_time - (gap_length / 2)
+
+    return minimum_occupation_at_gap + ((distance_from_gap_center.seconds / (gap_length.seconds / 2)) * (100 - minimum_occupation_at_gap))
+
+
+def _calculate_scores(parking_status: OrderedDict, gaps: list[datetime]) -> dict[int, dict[float, list[float]]]:
+    heat_map_data = dict()
+
+    for query_time, status in parking_status.items():
+        score = _calculate_score(query_time, gaps, parking_status)
+        if score is None:
+            continue
+
+        day = query_time.weekday()
+        hour = query_time.hour
+        minute = query_time.minute
+
+        if minute >= 30:
+            hour += 0.5
+
+        if day not in heat_map_data:
+            heat_map_data[day] = {}
+
+        if hour not in heat_map_data[day]:
+            heat_map_data[day][hour] = []
+
+        heat_map_data[day][hour].append(score)
+
+    return heat_map_data
+
+
+async def _create_view(lot_id: int, heat_map_data: dict[int, dict[float, list[float]]]):
+    for day, day_data in heat_map_data.items():
+        for hour, scores in day_data.items():
+            day_data[hour] = _calculate_avg_score(scores)
+    await ParkingLotViewApi.create_view(lot_id, dict(heat_map_data))
 
 
 async def update_parking_lot_views():
     for lot_id in LOT_IDS:
-        results = await ParkingLotApi.get_parking_lot_full_data(lot_id=lot_id)
+        parking_status = await _collect_data(lot_id)
+        gaps = _find_gaps(parking_status)
+        heat_map_data = _calculate_scores(parking_status, gaps)
+        await _create_view(lot_id, heat_map_data)
 
-        heat_map_data = dict()
-
-        for result in results:
-            dict_result = dict(result)
-            statuses = dict_result["status"]
-
-            day = dict_result["day"]
-            hour = float(dict_result["hour"])
-            minute = dict_result["minute"]
-            if minute >= 30:
-                hour += 0.5
-
-            if day not in heat_map_data:
-                heat_map_data[day] = {}
-
-            if hour not in heat_map_data[day]:
-                heat_map_data[day][hour] = HourScore()
-
-            for status in statuses.values():
-                status = Status(status)
-                if status == Status.full:
-                    heat_map_data[day][hour].full += 1
-                elif status == Status.empty:
-                    heat_map_data[day][hour].empty += 1
-                elif status == Status.few_left:
-                    heat_map_data[day][hour].few_left += 1
-
-        for day, day_data in heat_map_data.items():
-            for hour, hour_data in day_data.items():
-                day_data[hour] = round(hour_data.get_score(), 2)
-        await ParkingLotViewApi.create_view(lot_id, dict(heat_map_data))
 
 if __name__ == "__main__":
     loop = asyncio.get_event_loop()

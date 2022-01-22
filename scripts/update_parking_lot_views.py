@@ -1,7 +1,7 @@
 import asyncio
 from collections import OrderedDict
 from datetime import datetime, timedelta
-from typing import Optional, List
+from typing import Optional, List, Tuple, Dict
 
 from apis.parking_lot_view import ParkingLotViewApi
 from enums import Status
@@ -50,7 +50,7 @@ def _find_gaps(parking_status: OrderedDict) -> List[datetime]:
     return gaps
 
 
-def _get_next_gap_time(query_time: datetime, gaps: List[datetime]) -> tuple[Optional[datetime], Optional[timedelta]]:
+def _get_next_gap_time(query_time: datetime, gaps: List[datetime]) -> Tuple[Optional[datetime], Optional[timedelta]]:
     previous = None
     for gap in gaps:
         if query_time >= gap:
@@ -106,7 +106,7 @@ def _calculate_score(query_time, gaps, parking_status) -> Optional[float]:
     return minimum_occupation_at_gap + ((distance_from_gap_center.seconds / (gap_length.seconds / 2)) * (100 - minimum_occupation_at_gap))
 
 
-def _calculate_scores(parking_status: OrderedDict, gaps: List[datetime]) -> dict[int, dict[float, List[float]]]:
+def _calculate_scores(parking_status: OrderedDict, gaps: List[datetime]) -> Dict[int, Dict[float, List[float]]]:
     heat_map_data = dict()
 
     for query_time, status in parking_status.items():
@@ -132,7 +132,7 @@ def _calculate_scores(parking_status: OrderedDict, gaps: List[datetime]) -> dict
     return heat_map_data
 
 
-async def _create_view(lot_id: int, heat_map_data: dict[int, dict[float, List[float]]]):
+async def _create_view(lot_id: int, heat_map_data: Dict[int, Dict[float, List[float]]]):
     for day, day_data in heat_map_data.items():
         for hour, scores in day_data.items():
             day_data[hour] = _calculate_avg_score(scores)

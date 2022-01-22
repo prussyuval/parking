@@ -40,7 +40,6 @@ def _find_gaps(parking_status: OrderedDict) -> List[datetime]:
     for query_time, s in parking_status.items():
         if first:
             first = False
-            gaps.append(query_time)
             previous_full = s.is_full_state()
             continue
 
@@ -119,10 +118,14 @@ def _calculate_score(query_time, gaps, parking_status) -> Optional[float]:
 
     relation = abs(float(distance_from_gap_center.seconds) / (float(gap_length.seconds) / 2))
     if relation > 1:
+        print()
+        print(f"query_time => {query_time}")
+        print(f"next_gap_time => {next_gap_time}")
         print(f"gap_length => {gap_length}")
         print(f"relation => {relation}")
         print(f"minimum_occupation_at_gap => {minimum_occupation_at_gap}")
         print(f"distance_from_gap_center => {distance_from_gap_center}")
+        print()
 
     return minimum_occupation_at_gap + (relation * (100 - minimum_occupation_at_gap))
 

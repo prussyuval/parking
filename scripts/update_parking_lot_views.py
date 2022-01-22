@@ -53,12 +53,21 @@ def _find_gaps(parking_status: OrderedDict) -> List[datetime]:
 
 
 def _get_next_gap_time(query_time: datetime, gaps: List[datetime]) -> Tuple[Optional[datetime], Optional[timedelta]]:
+    """
+    >>> _get_next_gap_time(datetime(2021, 11, 10, 14, 1), [datetime(2021, 11, 10, 14, 2), datetime(2021, 11, 10, 14, 9), datetime(2021, 11, 10, 14, 14), datetime(2021, 11, 11, 10, 13), datetime(2021, 11, 11, 14, 21), datetime(2021, 11, 11, 19, 2), datetime(2021, 11, 11, 20, 30)])
+    (None, None)
+    >>> _get_next_gap_time(datetime(2021, 11, 11, 15, 21), [datetime(2021, 11, 10, 14, 2), datetime(2021, 11, 10, 14, 9), datetime(2021, 11, 10, 14, 14), datetime(2021, 11, 11, 10, 13), datetime(2021, 11, 11, 14, 21), datetime(2021, 11, 11, 19, 2), datetime(2021, 11, 11, 20, 30)])
+    (datetime(2021, 11, 11, 19, 2), datetime.timedelta(seconds=16860))
+    >>> _get_next_gap_time(datetime(2021, 11, 11, 20, 31), [datetime(2021, 11, 10, 14, 2), datetime(2021, 11, 10, 14, 9), datetime(2021, 11, 10, 14, 14), datetime(2021, 11, 11, 10, 13), datetime(2021, 11, 11, 14, 21), datetime(2021, 11, 11, 19, 2), datetime(2021, 11, 11, 20, 30)])
+    (None, None)
+    """
     end = None
     end_i = None
     for i, gap in enumerate(gaps):
         if query_time <= gap:
             end = gap
             end_i = i
+            break
 
     if end is None or end_i in [0, None]:
         return None, None
@@ -95,7 +104,6 @@ def _get_default_occupation_by_gap_time(gap_timedelta: timedelta) -> float:
 
 
 def _calculate_score(query_time, gaps, parking_status) -> Optional[float]:
-    print(gaps)
     next_gap_time, gap_length = _get_next_gap_time(query_time, gaps)
     if next_gap_time is None or gap_length is None:
         return None

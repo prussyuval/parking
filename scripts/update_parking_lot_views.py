@@ -53,17 +53,20 @@ def _find_gaps(parking_status: OrderedDict) -> List[datetime]:
 
 
 def _get_next_gap_time(query_time: datetime, gaps: List[datetime]) -> Tuple[Optional[datetime], Optional[timedelta]]:
-    previous = None
-    for gap in gaps:
-        if query_time >= gap:
-            if previous is None:
-                return gap, None
-            else:
-                return gap, gap - previous
+    end = None
+    end_i = None
+    for i, gap in enumerate(gaps):
+        if query_time <= gap:
+            end = gap
+            end_i = i
 
-        previous = gap
+    if end is None or end_i in [0, None]:
+        return None, None
 
-    return None, None
+    start_i = end_i - 1
+    start = gaps[start_i]
+
+    return end, end - start
 
 
 def _get_default_occupation_by_gap_time(gap_timedelta: timedelta) -> float:
@@ -113,7 +116,6 @@ def _calculate_scores(parking_status: OrderedDict, gaps: List[datetime]) -> Dict
 
     for query_time, status in parking_status.items():
         score = _calculate_score(query_time, gaps, parking_status)
-        print(score)
         if score is None:
             continue
 
@@ -131,7 +133,7 @@ def _calculate_scores(parking_status: OrderedDict, gaps: List[datetime]) -> Dict
             heat_map_data[day][hour] = []
 
         heat_map_data[day][hour].append(score)
-    print(heat_map_data)
+
     return heat_map_data
 
 

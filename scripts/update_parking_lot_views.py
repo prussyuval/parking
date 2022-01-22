@@ -12,7 +12,7 @@ from utils.time_serialize import str_to_datetime
 
 
 def _calculate_avg_score(scores: List[float]) -> float:
-    return round(100.0 * sum(scores) / len(scores), 2)
+    return round(sum(scores) / len(scores), 2)
 
 
 async def _collect_data(lot_id: int) -> OrderedDict:

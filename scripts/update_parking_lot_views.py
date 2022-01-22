@@ -92,7 +92,6 @@ def _get_default_occupation_by_gap_time(gap_timedelta: timedelta) -> float:
 
 
 def _calculate_score(query_time, gaps, parking_status) -> Optional[float]:
-    print(gaps)
     next_gap_time, gap_length = _get_next_gap_time(query_time, gaps)
     if next_gap_time is None or gap_length is None:
         return None

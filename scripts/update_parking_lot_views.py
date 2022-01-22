@@ -101,9 +101,9 @@ def _calculate_score(query_time, gaps, parking_status) -> Optional[float]:
         return 100.0
 
     minimum_occupation_at_gap = _get_default_occupation_by_gap_time(gap_length)
-    distance_from_gap_center: timedelta = next_gap_time - (gap_length / 2)
+    distance_from_gap_center: timedelta = query_time - (next_gap_time - (gap_length / 2))
 
-    return minimum_occupation_at_gap + ((distance_from_gap_center.seconds / (gap_length.seconds / 2)) * (100 - minimum_occupation_at_gap))
+    return minimum_occupation_at_gap + (abs(distance_from_gap_center.seconds / (gap_length.seconds / 2)) * (100 - minimum_occupation_at_gap))
 
 
 def _calculate_scores(parking_status: OrderedDict, gaps: List[datetime]) -> Dict[int, Dict[float, List[float]]]:

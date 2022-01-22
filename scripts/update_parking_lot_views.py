@@ -130,7 +130,7 @@ def _calculate_scores(parking_status: OrderedDict, gaps: List[datetime]) -> Dict
             heat_map_data[day][hour] = []
 
         heat_map_data[day][hour].append(score)
-
+    print(heat_map_data)
     return heat_map_data
 
 

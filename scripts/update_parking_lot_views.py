@@ -18,7 +18,7 @@ def _calculate_avg_score(scores: List[float]) -> float:
 async def _collect_data(lot_id: int) -> OrderedDict:
     results = await ParkingLotApi.get_parking_lot_full_data(lot_id=lot_id)
 
-    parking_status = OrderedDict()
+    parking_status = dict()
 
     for result in results:
         dict_result = dict(result)
@@ -27,7 +27,9 @@ async def _collect_data(lot_id: int) -> OrderedDict:
         for query_time, status in statuses.items():
             parking_status[str_to_datetime(query_time)] = Status(status)
 
-    return parking_status
+    return OrderedDict(
+        sorted(parking_status.items(), key=lambda x: x[0])
+    )
 
 
 def _find_gaps(parking_status: OrderedDict) -> List[datetime]:

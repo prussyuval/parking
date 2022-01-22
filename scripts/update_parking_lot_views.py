@@ -138,6 +138,8 @@ async def _create_view(lot_id: int, heat_map_data: Dict[int, Dict[float, List[fl
     for day, day_data in heat_map_data.items():
         for hour, scores in day_data.items():
             day_data[hour] = _calculate_avg_score(scores)
+    print(heat_map_data)
+
     await ParkingLotViewApi.create_view(lot_id, dict(heat_map_data))
 
 

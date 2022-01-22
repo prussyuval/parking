@@ -101,7 +101,7 @@ def _calculate_score(query_time, gaps, parking_status) -> Optional[float]:
 
     gap_status: Status = parking_status[next_gap_time]
 
-    if gap_status.is_full_state():
+    if not gap_status.is_full_state():
         # It's a full gap
         return 100.0
 
@@ -110,6 +110,7 @@ def _calculate_score(query_time, gaps, parking_status) -> Optional[float]:
 
     relation = abs(float(distance_from_gap_center.seconds) / (float(gap_length.seconds) / 2))
     if relation > 1:
+        print(gap_length)
         print(relation)
 
     return minimum_occupation_at_gap + (relation * (100 - minimum_occupation_at_gap))

@@ -113,6 +113,7 @@ def _calculate_scores(parking_status: OrderedDict, gaps: List[datetime]) -> Dict
 
     for query_time, status in parking_status.items():
         score = _calculate_score(query_time, gaps, parking_status)
+        print(score)
         if score is None:
             continue
 

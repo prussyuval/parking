@@ -24,7 +24,7 @@ async def _collect_data(lot_id: int) -> OrderedDict:
         dict_result = dict(result)
         statuses = dict_result["status"]
 
-        for query_time, status in statuses.values():
+        for query_time, status in statuses.items():
             parking_status[str_to_datetime(query_time)] = Status(status)
 
     return parking_status

@@ -33,6 +33,13 @@ INSERT INTO lots (lot_id, eng_name, heb_name, address, nicknames) VALUES (40, 'r
 INSERT INTO lots (lot_id, eng_name, heb_name, address, nicknames) VALUES (94, 'habima plaza', 'התרבות', ' הוברמן 1 תל-אביב יפו', '["הבימה"]');
 INSERT INTO lots (lot_id, eng_name, heb_name, address, nicknames) VALUES (45, 'tel nordau', 'תל-נורדאו', 'פרישמן 28 תל-אביב יפו', '[]');
 
+INSERT INTO lots (lot_id, eng_name, heb_name, address, nicknames) VALUES (29, 'montefiore', 'מונטיפיורי', 'מונטיפיורי 5 תל-אביב יפו', '[]');
+INSERT INTO lots (lot_id, eng_name, heb_name, address, nicknames) VALUES (10, 'golda', 'גולדה', 'ברקוביץ 7 תל-אביב יפו', '[]');
+INSERT INTO lots (lot_id, eng_name, heb_name, address, nicknames) VALUES (123, 'arlosoroff', 'ארלוזורוב 17', 'ארלוזורוב 17 תל-אביב יפו', '["חיים ארלוזורוב"]');
+INSERT INTO lots (lot_id, eng_name, heb_name, address, nicknames) VALUES (122, 'assuta', 'אסותא', ' ז`בוטינסקי 62 תל-אביב יפו', '["אסותה"]');
+INSERT INTO lots (lot_id, eng_name, heb_name, address, nicknames) VALUES (3, 'basel', 'באזל', 'אשתורי הפרחי 5 תל-אביב יפו', '["באסל"]');
+INSERT INTO lots (lot_id, eng_name, heb_name, address, nicknames) VALUES (37, 'cinerama', 'סינרמה', 'יצחק שדה 45 תל-אביב יפו', '["סינרמא"]');
+
 INSERT INTO lots (lot_id, eng_name, heb_name, address, nicknames) VALUES (31, 'Da Vinci ', 'מפעל הפיס', 'ליאונרדו דוינצי 5 תל-אביב יפו', '["Hapais"]');
 
 -- ALTER TABLE parking_lots ADD COLUMN update_date timestamp;

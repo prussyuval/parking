@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3b52b693-334a-4afe-93e8-f82d8ff49d1d" name="Default Changelist" comment="Fix heat map calculation">
-      <change beforePath="$PROJECT_DIR$/scripts/update_parking_lot_views.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/update_parking_lot_views.py" afterDir="false" />
+    <list default="true" id="3b52b693-334a-4afe-93e8-f82d8ff49d1d" name="Default Changelist" comment="Bug fix">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/initial_db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/initial_db.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lot_ids.py" beforeDir="false" afterPath="$PROJECT_DIR$/lot_ids.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +37,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python tests.Doctest _get_next_gap_time">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="parking" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -58,6 +60,30 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="Doctest _get_next_gap_time" type="tests" factoryName="Doctests" temporary="true" nameIsGenerated="true">
+      <module name="parking" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/scripts" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scripts/update_parking_lot_views.py" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="_get_next_gap_time" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_FUNCTION" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python tests.Doctest _get_next_gap_time" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -78,7 +104,15 @@
       <workItem from="1637777256791" duration="595000" />
       <workItem from="1637796383756" duration="1352000" />
       <workItem from="1640957664713" duration="2122000" />
-      <workItem from="1640963522093" duration="434000" />
+      <workItem from="1640963522093" duration="506000" />
+      <workItem from="1641035973584" duration="7000" />
+      <workItem from="1641062262753" duration="28000" />
+      <workItem from="1641063196206" duration="696000" />
+      <workItem from="1641066332726" duration="598000" />
+      <workItem from="1641075143012" duration="1519000" />
+      <workItem from="1641146004905" duration="2424000" />
+      <workItem from="1642857510243" duration="8615000" />
+      <workItem from="1643303035393" duration="524000" />
     </task>
     <task id="LOCAL-00001" summary="More changes">
       <created>1635887343474</created>
@@ -206,7 +240,203 @@
       <option name="project" value="LOCAL" />
       <updated>1640963912105</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="bug fix">
+      <created>1640963963133</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1640963963133</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Bug fix">
+      <created>1640963989491</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1640963989491</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Split ho halfs">
+      <created>1641063289722</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1641063289722</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Fix calculation">
+      <created>1641151152268</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1641151152268</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Fix calculation">
+      <created>1641151357022</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1641151357022</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Write new logic">
+      <created>1642863392782</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1642863392782</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Fix typing">
+      <created>1642863452947</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1642863452947</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Fix typing">
+      <created>1642863490640</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1642863490641</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Fix typing">
+      <created>1642863517803</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1642863517803</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Fix typing">
+      <created>1642863685973</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1642863685973</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Try debug">
+      <created>1642863792111</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1642863792111</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Try debug">
+      <created>1642864105669</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1642864105669</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Remove debug">
+      <created>1642864122104</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1642864122104</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Add debug">
+      <created>1642864221042</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1642864221042</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Add debug">
+      <created>1642864273978</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1642864273978</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Add debug">
+      <created>1642864334754</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1642864334754</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Add debug">
+      <created>1642864662195</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1642864662195</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Add debug">
+      <created>1642864707905</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1642864707905</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Add debug">
+      <created>1642865207060</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1642865207060</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Add debug">
+      <created>1642865413726</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1642865413726</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Add debug">
+      <created>1642865473193</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1642865473193</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Add debug">
+      <created>1642865702197</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1642865702197</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Bug fix">
+      <created>1642866104893</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1642866104893</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Bug fix">
+      <created>1642866174063</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1642866174063</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Add more to debug">
+      <created>1642866652854</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1642866652854</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Bug fix">
+      <created>1642867386433</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1642867386433</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Bug fix">
+      <created>1642867964581</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1642867964581</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Bug fix">
+      <created>1642868090091</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1642868090091</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -234,10 +464,22 @@
     <MESSAGE value="Add traffic" />
     <MESSAGE value="Clear in case of empty IP" />
     <MESSAGE value="Add views data" />
-    <MESSAGE value="Bug fix" />
     <MESSAGE value="Add rounding" />
     <MESSAGE value="Add heat map resource" />
     <MESSAGE value="Fix heat map calculation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix heat map calculation" />
+    <MESSAGE value="bug fix" />
+    <MESSAGE value="Split ho halfs" />
+    <MESSAGE value="Fix calculation" />
+    <MESSAGE value="Write new logic" />
+    <MESSAGE value="Fix typing" />
+    <MESSAGE value="Try debug" />
+    <MESSAGE value="Remove debug" />
+    <MESSAGE value="Add debug" />
+    <MESSAGE value="Add more to debug" />
+    <MESSAGE value="Bug fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bug fix" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/parking$Doctest__get_next_gap_time.coverage" NAME="Doctest _get_next_gap_time Coverage Results" MODIFIED="1642868086096" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scripts" />
   </component>
 </project>

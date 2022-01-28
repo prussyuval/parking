@@ -2,14 +2,15 @@ import asyncio
 from datetime import datetime
 
 from apis.external.ahuzot_api import AhuzotApi
+from apis.lot import LotApi
 from apis.parking_lot import ParkingLotApi
-from lot_ids import LOT_IDS
 from utils.logging import logger
 from utils.time_serialize import datetime_to_str
 
 
 async def query_parking_lots():
-    for lot_id in LOT_IDS:
+    lot_ids = await LotApi.get_lot_ids()
+    for lot_id in lot_ids:
         try:
             current_status, query_time = await AhuzotApi.query_status(lot_id)
         except:

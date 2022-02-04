@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3b52b693-334a-4afe-93e8-f82d8ff49d1d" name="Default Changelist" comment="Add more lot ids">
+    <list default="true" id="3b52b693-334a-4afe-93e8-f82d8ff49d1d" name="Default Changelist" comment="add lot ids">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apis/lot.py" beforeDir="false" afterPath="$PROJECT_DIR$/apis/lot.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lot_ids.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/initial_db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/initial_db.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +113,8 @@
       <workItem from="1642857510243" duration="8615000" />
       <workItem from="1643303035393" duration="792000" />
       <workItem from="1643385921514" duration="158000" />
-      <workItem from="1643387537727" duration="196000" />
+      <workItem from="1643387537727" duration="740000" />
+      <workItem from="1643997663185" duration="497000" />
     </task>
     <task id="LOCAL-00001" summary="More changes">
       <created>1635887343474</created>
@@ -446,7 +445,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643303573874</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="add lot ids">
+      <created>1643387744379</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1643387744379</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -488,7 +494,8 @@
     <MESSAGE value="Add more to debug" />
     <MESSAGE value="Bug fix" />
     <MESSAGE value="Add more lot ids" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add more lot ids" />
+    <MESSAGE value="add lot ids" />
+    <option name="LAST_COMMIT_MESSAGE" value="add lot ids" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/parking$Doctest__get_next_gap_time.coverage" NAME="Doctest _get_next_gap_time Coverage Results" MODIFIED="1642868086096" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scripts" />

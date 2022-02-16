@@ -37,7 +37,7 @@ async def query_parking_lots():
             status = dict_result["status"]
             if datetime_to_str(query_time) in status:
                 logger.warning(f"Time {query_time} already exists in the db")
-                return
+                continue
 
             status[datetime_to_str(query_time)] = current_status.value
             await ParkingLotApi.update_status(lot_id=lot_id,

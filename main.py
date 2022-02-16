@@ -10,6 +10,7 @@ from utils.time_serialize import datetime_to_str
 
 async def query_parking_lots():
     lot_ids = await LotApi.get_lot_ids()
+    logger.info(f"Received lots: {lot_ids}")
     for lot_id in lot_ids:
         try:
             current_status, query_time = await AhuzotApi.query_status(lot_id)

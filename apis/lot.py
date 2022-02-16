@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, List
 
 from aiopg.sa.result import RowProxy
 from sqlalchemy import or_
@@ -20,12 +20,11 @@ class LotApi:
                     )
             ))
 
-        return await results.fetchall()
+            return await results.fetchall()
 
     @staticmethod
-    async def get_lot_ids() -> list[int]:
+    async def get_lot_ids() -> List[int]:
         async with DatabaseConnection.acquire_connection() as connection:
             results = await connection.execute(ParkingLotTable.select())
-
-        results = await results.fetchall()
+            results = await results.fetchall()
         return [r["lot_id"] for r in results]

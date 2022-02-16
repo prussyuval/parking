@@ -14,7 +14,7 @@ async def query_parking_lots():
         try:
             current_status, query_time = await AhuzotApi.query_status(lot_id)
         except:
-            logger.warning(f"Failed to receive status on {datetime.now()}")
+            logger.warning(f"Lot {lot_id} ->Failed to receive status on {datetime.now()}")
             continue
 
         existing_result = await ParkingLotApi.get_status(lot_id=lot_id,
@@ -36,7 +36,7 @@ async def query_parking_lots():
             dict_result = dict(existing_result)
             status = dict_result["status"]
             if datetime_to_str(query_time) in status:
-                logger.warning(f"Time {query_time} already exists in the db")
+                logger.warning(f"Lot {lot_id} -> Time {query_time} already exists in the db")
                 continue
 
             status[datetime_to_str(query_time)] = current_status.value

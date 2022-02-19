@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3b52b693-334a-4afe-93e8-f82d8ff49d1d" name="Default Changelist" comment="Changes">
-      <change beforePath="$PROJECT_DIR$/apis/lot.py" beforeDir="false" afterPath="$PROJECT_DIR$/apis/lot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/update_parking_lot_views.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/update_parking_lot_views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,6 +116,8 @@
       <workItem from="1643387537727" duration="740000" />
       <workItem from="1643997663185" duration="1144000" />
       <workItem from="1645032030010" duration="544000" />
+      <workItem from="1645083062959" duration="1881000" />
+      <workItem from="1645281307340" duration="39000" />
     </task>
     <task id="LOCAL-00005" summary="Style fix">
       <created>1637536355660</created>

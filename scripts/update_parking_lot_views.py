@@ -3,9 +3,9 @@ from collections import OrderedDict
 from datetime import datetime, timedelta
 from typing import Optional, List, Tuple, Dict
 
+from apis.lot import LotApi
 from apis.parking_lot_view import ParkingLotViewApi
 from enums import Status
-from lot_ids import LOT_IDS
 
 from apis.parking_lot import ParkingLotApi
 from utils.time_serialize import str_to_datetime
@@ -172,7 +172,8 @@ async def _create_view(lot_id: int, heat_map_data: Dict[int, Dict[float, List[fl
 
 
 async def update_parking_lot_views():
-    for lot_id in LOT_IDS:
+    lot_ids = await LotApi.get_lot_ids()
+    for lot_id in lot_ids:
         parking_status = await _collect_data(lot_id)
         gaps = _find_gaps(parking_status)
         heat_map_data = _calculate_scores(parking_status, gaps)
